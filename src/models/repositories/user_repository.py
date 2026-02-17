@@ -1,7 +1,8 @@
 from sqlite3 import Connection
+from src.models.interfaces.user_repository import UserRepositoryInterface
 
 
-class UserRepository:
+class UserRepository(UserRepositoryInterface):
     # vai passar a conexão com o banco de dados
     # injeção de dependencia
     def __init__(self, connection: Connection) -> None:
@@ -34,7 +35,7 @@ class UserRepository:
         )
         self._connection.commit()
 
-    def get_user_by_username(self, username: str):
+    def get_user_by_username(self, username: str) -> tuple[int, str, str]:
         cursor = self._connection.cursor()
 
         cursor.execute(
