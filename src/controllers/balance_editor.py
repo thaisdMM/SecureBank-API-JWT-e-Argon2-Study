@@ -1,8 +1,9 @@
 from src.models.interfaces.user_repository import UserRepositoryInterface
+from .interfaces.balance_editor import BalanceEditorInterface
 
 
 # não vai fazer a validação do token jwt, pois essa validação vai ser feita em outro arquivo ainda
-class BalanceEditor:
+class BalanceEditor(BalanceEditorInterface):
     def __init__(self, user_repository: UserRepositoryInterface) -> None:
         self._user_repository = user_repository
 
