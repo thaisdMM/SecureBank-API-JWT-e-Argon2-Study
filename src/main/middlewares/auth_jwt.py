@@ -1,5 +1,6 @@
 from flask import request
 from src.drivers.jwt_handler import JwtHandler
+from src.errors.types.htt_unauthorized import HttpUnauthorizedError
 
 
 # vai verificar as informações do jwt antes de views, do controllers e de realizar algo no banco de dados
@@ -10,7 +11,7 @@ def auth_jwt_verify():
     user_id = request.headers.get("uid")
 
     if not raw_token or not user_id:
-        raise Exception("Invalid Auth informations")
+        raise HttpUnauthorizedError("Invalid Auth informations")
 
     token = raw_token.split()[1]
     token_information = jwt_handle.decode_jwt_token(token)
@@ -23,4 +24,4 @@ def auth_jwt_verify():
         return token_information
 
     # se não existir ou se o valor for diferente
-    raise Exception("User Unauthorized")
+    raise HttpUnauthorizedError("User Unauthorized")
