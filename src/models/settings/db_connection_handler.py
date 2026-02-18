@@ -9,7 +9,11 @@ class __DbConnectionHandler:
         self._connection = None
 
     def connect(self) -> None:
-        self._connection = sqlite3.connect(self._connection_string)
+        # check_same_thread=False
+        # → permite que uma conexão SQLite seja usada por múltiplas threads
+        self._connection = sqlite3.connect(
+            self._connection_string, check_same_thread=False
+        )
 
     def get_connection(self) -> Connection:
         return self._connection
