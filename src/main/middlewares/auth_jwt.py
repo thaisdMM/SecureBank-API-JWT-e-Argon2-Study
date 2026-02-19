@@ -1,6 +1,6 @@
 from flask import request
 from src.drivers.jwt_handler import JwtHandler
-from src.errors.types.htt_unauthorized import HttpUnauthorizedError
+from src.errors.types.http_unauthorized import HttpUnauthorizedError
 
 
 def auth_jwt_verify():

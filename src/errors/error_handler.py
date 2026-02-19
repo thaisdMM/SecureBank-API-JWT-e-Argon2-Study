@@ -1,7 +1,7 @@
 from src.views.http_types.http_response import HttpResponse
 from .types.http_bad_request import HttpBadRequestError
 from .types.http_not_found import HttpNotFoundError
-from .types.htt_unauthorized import HttpUnauthorizedError
+from .types.http_unauthorized import HttpUnauthorizedError
 
 
 def handle_errors(error: Exception) -> HttpResponse:
