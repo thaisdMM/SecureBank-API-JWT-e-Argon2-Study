@@ -30,6 +30,7 @@ class BalanceEditorView(ViewInterface):
             not new_balance
             or not user_id
             or not isinstance(new_balance, float)
+            or new_balance <= 0
             or int(header_user_id) != int(user_id)
         ):
             raise HttpBadRequestError("Invalid Input")
