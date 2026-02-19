@@ -30,5 +30,5 @@ def test_create_wrong_password():
 
     login_creator = LoginCreator(MockUserRepository())
 
-    with pytest.raises(Exception, match="Wrong password"):
+    with pytest.raises(Exception, match="Senha incorreta"):
         login_creator.create(username, "senhaErrada")
